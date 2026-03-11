@@ -1,7 +1,7 @@
  #include <xc.h>
  #include "inc/EMICBus.h"
- #include "inc/I2C1_driver.h"
- #include "inc/I2C1.h"
+ #include "inc/I2C2_driver.h"
+ #include "inc/I2C2.h"
  #include "inc/streamIn.h"
  #include "inc/stream.h"
  #include "inc/userFncFile.h"
@@ -43,25 +43,25 @@ void EMICBus_init()
 void poll_EMICBus(void)
 {
 	char d;
-	if(IsReceiveOverflowI2c1())//si hay un overflow lo resetea
+	if(IsReceiveOverflowI2c2())//si hay un overflow lo resetea
 	{
-		OverflowReset_I2C1();
+		OverflowReset_I2C2();
 	}
 
-	if (i2c1InStream.frame_count)
+	if (i2c2InStream.frame_count)
 	{
-		streamOpenReadFrame(&i2c1InStream);
+		streamOpenReadFrame(&i2c2InStream);
 		d=pop_I2C_IN();
 		switch(d)
 		{
 			case tipoTrama_mensaje:;
-			while (i2c1InStream.data_count_sal)
+			while (i2c2InStream.data_count_sal)
 			{
 				pop_I2C_IN();
 			}
 				break;
 			case tipoTrama_control:;
-			if (i2c1InStream.data_count_sal > 0)
+			if (i2c2InStream.data_count_sal > 0)
 			{
 				switch(pop_I2C_IN())
 				{
@@ -69,25 +69,25 @@ void poll_EMICBus(void)
 						//reset_cpu();
 						break;
 					default:
-						while (i2c1InStream.data_count_sal)
+						while (i2c2InStream.data_count_sal)
 							pop_I2C_IN();
 					break;
 				}
 			}
 				break;
 			default:
-				while (i2c1InStream.data_count_sal)
+				while (i2c2InStream.data_count_sal)
 					pop_I2C_IN();
 				break;
 		}	
 	}
 	
-	if(stopflag==1 && IsStopI2c1() )
+	if(stopflag==1 && IsStopI2c2() )
 	{
 		stopflag=0;
 		pop_I2C_OUT_FM();
 	}
-	if (i2c1OutStream.frame_count && (!IsStartI2c1()))
+	if (i2c2OutStream.frame_count && (!IsStartI2c2()))
 	{
 		if(stopflag == 1)
 		{

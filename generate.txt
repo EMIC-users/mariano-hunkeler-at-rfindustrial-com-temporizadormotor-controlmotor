@@ -1,0 +1,149 @@
+
+
+    //-------------- Hardware Config ---------------------
+
+    //------------------- Process EMIC-Generate files result ----------------
+
+// Functions:
+
+
+// Events:
+
+
+    //------------------- APIs -----------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//EMIC:setOutput(TARGET:conversionFunctions.c)
+	//EMIC:setInput(src/conversionFunctions.c)
+//EMIC:restoreOutput
+
+//EMIC:define(c_modules.conversionFunctions,conversionFunctions.c)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*==================[end of file]============================================*/
+
+
+
+
+
+
+
+
+
+/*==================[end of file]============================================*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ //prueba GIT
+
+
+
+
+
+
+ //prueba GIT
+
+
+
+
+    //-------------------- main  -----------------------
+
+
+
+
+
+
+
+
+
+
+
+    //------------------- Copy  EMIC-Generate files result ----------------
+
+    //------------------- Set userFncFile.c as a copiler module ----------------
+
+    //------------------- Add all compiler modules to the project. ----------------
+
